@@ -18,11 +18,11 @@ end
 coffee_shops = []
 
 CSV.parse(shop_data, headers: false) do |row|
-  name, y_coordinate, x_coordinate = row
+  name, x_coordinate, y_coordinate = row
   begin
-    y_coordinate = y_coordinate.to_f  
     x_coordinate = x_coordinate.to_f  
-    coffee_shops << { name: name, y: y_coordinate, x: x_coordinate }
+    y_coordinate = y_coordinate.to_f  
+    coffee_shops << { name: name, x: x_coordinate, y: y_coordinate }
   end
 end
 
