@@ -8,8 +8,14 @@ if ARGV.length != 3
   exit
 end
 
-user_x = ARGV[0].to_f  
-user_y = ARGV[1].to_f  
+begin
+  user_x = Float(ARGV[0])
+  user_y = Float(ARGV[1])
+rescue ArgumentError
+  puts "Error: Coordonatele user-ului nu sunt valide"
+  exit
+end
+
 shop_data_url = ARGV[2]
 
 begin
