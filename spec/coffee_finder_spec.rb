@@ -2,9 +2,9 @@ require 'open3'
 require_relative '../coffee_finder'
 
 RSpec.describe 'Coffee Finder' do
-  let(:csv_file) { 'https://raw.githubusercontent.com/Agilefreaks/test_oop/master/coffee_shops.csv' }  
+   
   it 'test with valid input' do
-    input = "47.6 -122.4 #{csv_file}"
+    input = "47.6 -122.4 coffee_shops.csv"
     expected_output = <<~OUTPUT
       Starbucks Seattle2,0.0645
       Starbucks Seattle,0.0861
@@ -16,7 +16,7 @@ RSpec.describe 'Coffee Finder' do
   end
 
   it 'test with invalid user coordinates' do
-    input = "a b #{csv_file}"
+    input = "a b coffee_shops.csv"
     expected_output = "Error: Coordonatele user-ului nu sunt valide\n"
     stdout, stderr, status = Open3.capture3("ruby coffee_finder.rb #{input}")
     expect(stdout).to eq(expected_output)
